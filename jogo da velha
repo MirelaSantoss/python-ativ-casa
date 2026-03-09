@@ -1,0 +1,42 @@
+rodada = 1
+tabuleiro = [
+    [" "," "," "],
+    [" "," "," "],
+    [" "," "," "]
+]
+def mostrarTabuleiro():
+    for linha in tabuleiro:
+        for coluna in linha:
+            print(f"{coluna}|", end="")
+        print()
+        print("-----")
+
+
+
+def verificarjogador():
+    if tabuleiro[0][0] and  tabuleiro[1][0] and tabuleiro[2][0] == "X" or "O":
+        return True 
+    return False
+
+
+
+while rodada <= 9:
+
+    mostrarTabuleiro()
+    linha = int(input("Digite a linha que você quer jogar"))
+    coluna = int(input("Digite a coluna que você quer jogar"))
+
+    if tabuleiro[linha][coluna] == " ":
+
+        if rodada % 2 == 1:
+            tabuleiro = [linha][coluna] = "X"
+
+        else:
+            tabuleiro = [linha][coluna] = "O"
+            if (verificarjogador()):
+                mostrarTabuleiro()
+                print("Jogo finalizado")
+        rodada +=1
+
+    else: 
+        print("Casa ocupada")
