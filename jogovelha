@@ -1,0 +1,60 @@
+r = 1
+tab = [
+
+    [" ", " ", " "],
+    [" ", " ", " "],
+    [" ", " ", " "]
+ 
+    ]
+
+def showg():
+    for l in tab:
+        print("|", end ="")
+        for c in l:
+            print(c, "|", end="")
+        print()
+        print("------------")
+
+def verifiyend():
+    
+    
+    for i in range(3):
+         if tab[i][0] == tab[i][1] == tab[i][2] != " ":
+            return True
+
+    for i in range(3):
+        if tab[0][i] == tab[1][i] == tab[2][i] !=" ":
+            return True
+        
+    if tab[0][0] == tab[1][1] == tab[2][2] != " ":
+        return True
+
+    if tab[0][2] == tab[1][1] == tab[2][0] != " ":
+        return True
+            
+    return False
+
+
+while r <= 9:
+    showg()
+    l = int(input("Digite a linha da jogada: "))
+    c = int(input("Digite a coluna da jogada: "))
+    if tab[l][c] == " ":
+        if(r % 2 == 0):
+            tab[l][c] = "O"
+        else:
+            tab[l][c] = "X"
+        r +=1
+        if verifiyend():
+            showg()
+            if r % 2 == 0:
+                print("Jogador 'X' Venceu")
+            else:
+                print("Jogador 'O' venceu!")
+            break
+        elif not verifiyend() and r == 10:
+            showg()
+            print("Jogo empatado!")
+            break
+    else:
+        print("Espaco Ocupado! Tente novamente!")
